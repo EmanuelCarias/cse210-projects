@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-
+//Emanuel Carias, W02 Prove: Developer—Journal
 class Entry
 {
     public string Prompt { get; set; }
@@ -45,13 +45,13 @@ class Journal
     public void SaveToFile(string filename)
     {
         // Implementación para guardar el diario en un archivo
-        Console.WriteLine("Diario guardado en el archivo: " + filename);
+        Console.WriteLine("Journal saved in the archive: " + filename);
     }
 
     public void LoadFromFile(string filename)
     {
         // Implementación para cargar el diario desde un archivo
-        Console.WriteLine("Diario cargado desde el archivo: " + filename);
+        Console.WriteLine("Journal loaded from the archive: " + filename);
     }
 }
 
@@ -67,13 +67,13 @@ class Program
     {
         while (true)
         {
-            Console.WriteLine("1. Escribir una nueva entrada");
-            Console.WriteLine("2. Mostrar el diario");
-            Console.WriteLine("3. Guardar el diario en un archivo");
-            Console.WriteLine("4. Cargar el diario desde un archivo");
-            Console.WriteLine("5. Salir");
+            Console.WriteLine("1. Write a new entry");
+            Console.WriteLine("2. Show the journal");
+            Console.WriteLine("3. Saving the journal to a file");
+            Console.WriteLine("4. Load the journal from a file");
+            Console.WriteLine("5. Exit");
 
-            Console.Write("Ingrese su elección: ");
+            Console.Write("Enter your choice: ");
             int choice = int.Parse(Console.ReadLine());
 
             switch (choice)
@@ -85,20 +85,20 @@ class Program
                     journal.DisplayJournal();
                     break;
                 case 3:
-                    Console.Write("Ingrese el nombre del archivo para guardar: ");
+                    Console.Write("Enter the name of the file to save: ");
                     string saveFilename = Console.ReadLine();
                     journal.SaveToFile(saveFilename);
                     break;
                 case 4:
-                    Console.Write("Ingrese el nombre del archivo para cargar: ");
+                    Console.Write("Enter the name of the file to upload: ");
                     string loadFilename = Console.ReadLine();
                     journal.LoadFromFile(loadFilename);
                     break;
                 case 5:
-                    Console.WriteLine("Saliendo del programa.");
+                    Console.WriteLine("Exiting the program.");
                     return;
                 default:
-                    Console.WriteLine("Opción no válida. Por favor, intente de nuevo.");
+                    Console.WriteLine("Invalid option. Please try again.");
                     break;
             }
         }
@@ -107,18 +107,18 @@ class Program
     static void WriteNewEntry(Journal journal)
     {
         string[] prompts = {
-            "¿Quién fue la persona más interesante con la que interactué hoy?",
-            "¿Cuál fue la mejor parte de mi día?",
-            "¿Cómo vi la mano del Señor en mi vida hoy?",
-            "¿Cuál fue la emoción más fuerte que sentí hoy?",
-            "Si pudiera hacer una cosa de nuevo hoy, ¿qué sería?"
+           "Who was the most interesting person I interacted with today?",
+            "What was the best part of my day?",
+            "How did I see the Lord's hand in my life today?", "What was the strongest emotion I felt today?",
+            "What was the strongest emotion I felt today?", "What was the strongest emotion I felt today?", "What was the strongest emotion I felt today?",
+            "If you could do one thing again today, what would it be?"
         };
 
         Random rand = new Random();
         string randomPrompt = prompts[rand.Next(prompts.Length)];
 
-        Console.WriteLine($"Pregunta: {randomPrompt}");
-        Console.Write("Ingrese su respuesta: ");
+        Console.WriteLine($"Ask: {randomPrompt}");
+        Console.Write("Enter your answer: ");
         string response = Console.ReadLine();
 
         string date = DateTime.Now.ToString("yyyy-MM-dd");
@@ -126,6 +126,6 @@ class Program
         Entry entry = new Entry(randomPrompt, response, date);
         journal.AddEntry(entry);
 
-        Console.WriteLine("Entrada agregada exitosamente.");
+        Console.WriteLine("Entry successfully added.");
     }
 }
